@@ -15,10 +15,15 @@ spring:
         # https://stackoverflow.com/questions/21257819/what-is-the-difference-between-hibernate-jdbc-fetch-size-and-hibernate-jdbc-batc
         jdbc.batch_size: 20
   datasource:
+    type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:h2:mem:cloudjava
     #    tcp: jdbc:h2:tcp://localhost:9092/mem:cloudjava
     username: sa
     password:
+    hikari:
+      pool-name: hikari-pool
+      maximum-pool-size: 5
+      minimum-idle: 5
 
   # Jackson Serialization Issue Resolver
   jackson.visibility:
@@ -34,7 +39,7 @@ spring:
 
 logging:
   level:
-    root: WARN
+    root: INFO
     ru.javaops.cloudjava: DEBUG
     org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: DEBUG
 
